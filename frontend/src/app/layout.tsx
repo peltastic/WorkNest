@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { createTheme, MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+import { NavigationProgress } from "@mantine/nprogress";
+import "@mantine/core/styles.css";
+import "@mantine/dropzone/styles.css";
+import "@mantine/notifications/styles.css";
+import "@mantine/nprogress/styles.css";
+import Providers from "@/components/Providers/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +18,10 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
 });
 
 export const metadata: Metadata = {
@@ -27,7 +39,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <MantineProvider theme={theme}>
+            <NavigationProgress color="#f11946" />
+            <Notifications />
+            {children}
+          </MantineProvider>
+        </Providers>
       </body>
     </html>
   );

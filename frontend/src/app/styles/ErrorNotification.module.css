@@ -1,0 +1,21 @@
+.root {
+    background-color:#e4d4d4;
+    border: 0.5px solid #FFB1B2;
+  
+    &::before {
+      background-color:  #b41c1f;
+    }
+  }
+  
+  .description,
+  .title {
+    color: black;
+  }
+  
+  .closeButton {
+    color: black;
+  
+    /* @mixin hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    } */
+  }

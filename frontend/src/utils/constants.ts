@@ -1,0 +1,1 @@
+export const successColor = "#22C55E";

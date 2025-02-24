@@ -93,12 +93,12 @@ const LoginForm = (props: Props) => {
               password
             />
           </div>
-          <p className="mt-6 text-gray-400">
+          {props.loginType === "admin" ? null : <p className="mt-6 text-gray-400">
             Don't have an account?{" "}
             <span className="underline">
               <Link href={"/user/auth/register"}>create one</Link>
             </span>
-          </p>
+          </p>}
           <button
             disabled={isLoading}
             className="disabled:opacity-55 flex justify-center disabled:cursor-not-allowed bg-primary text-white w-full mt-10 py-4 rounded-md"

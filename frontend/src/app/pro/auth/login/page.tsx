@@ -12,7 +12,7 @@ const LoginAsPro = (props: Props) => {
           <div className="w-full">
             <h2 className="text-2xl font-medium">Log into your account</h2>
             <div className="w-full">
-              <LoginForm />
+              <LoginForm  loginType="artisan"/>
             </div>
           </div>
         </div>

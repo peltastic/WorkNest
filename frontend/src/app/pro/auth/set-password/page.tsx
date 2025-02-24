@@ -1,3 +1,4 @@
+"use client"
 import SetPassword from '@/components/Forms/SetPassword'
 import ProLayout from '@/components/Pro/ProLayout'
 import React from 'react'

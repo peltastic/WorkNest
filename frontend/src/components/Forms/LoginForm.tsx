@@ -9,7 +9,7 @@ import {
 } from "@/lib/features/auth/auth";
 import { nprogress } from "@mantine/nprogress";
 import { notify } from "@/utils/notification";
-import { setAdminTokenCookie, setTokenCookie } from "@/utils/storage";
+import { setAdminTokenCookie, setArtisanTokenCookie, setTokenCookie } from "@/utils/storage";
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/utils/validation/auth";
 import Spinner from "../Spinner";
@@ -33,9 +33,15 @@ const LoginForm = (props: Props) => {
     if (isSuccess) {
       nprogress.start();
       notify("success", "Login successful!");
-      setTokenCookie(data.token);
+      if (props.loginType === "artisan") {
+        setArtisanTokenCookie(data.token)
+        router.push("/pro/orders")
+      } else {
+        router.push("/feed");
+
+        setTokenCookie(data.token);
+      }
       nprogress.complete();
-      router.push("/feed");
     }
   }, [isError, isSuccess]);
 

@@ -135,3 +135,5 @@ describe("Auth Controller Tests", () => {
     expect(res.body.message).toBe("User not found");
   });
 });
+
+

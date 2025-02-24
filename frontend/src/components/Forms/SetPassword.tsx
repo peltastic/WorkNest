@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { Form, Formik } from "formik";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import Field from "../Field";
 import { useSetArtisanPasswordMutation } from "@/lib/features/auth/auth";
 import Spinner from "../Spinner";
@@ -9,9 +9,7 @@ import { notify } from "@/utils/notification";
 import { useRouter, useSearchParams } from "next/navigation";
 import { setPasswordSchema } from "@/utils/validation/auth";
 
-type Props = {};
-
-const SetPassword = (props: Props) => {
+const SetPasswordContent = () => {
   const router = useRouter();
   const search = useSearchParams();
   const searchVal = search.get("token");
@@ -21,7 +19,7 @@ const SetPassword = (props: Props) => {
   useEffect(() => {
     if (isError) {
       nprogress.complete();
-      notify("error", "", (error as any).data?.message || "An Error Occured");
+      notify("error", "", (error as any).data?.message || "An Error Occurred");
     }
 
     if (isSuccess) {
@@ -31,6 +29,7 @@ const SetPassword = (props: Props) => {
       router.push("/pro/auth/login");
     }
   }, [isError, isSuccess]);
+
   return (
     <Formik
       initialValues={{
@@ -62,7 +61,7 @@ const SetPassword = (props: Props) => {
             <Field
               name="confirmPassword"
               classname="w-full"
-              label="Password"
+              label="Confirm Password"
               placeholder="Enter password confirmation"
               password
             />
@@ -83,6 +82,14 @@ const SetPassword = (props: Props) => {
         </Form>
       )}
     </Formik>
+  );
+};
+
+const SetPassword = () => {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <SetPasswordContent />
+    </Suspense>
   );
 };
 

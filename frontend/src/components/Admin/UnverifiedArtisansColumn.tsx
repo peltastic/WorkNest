@@ -1,6 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-import Image from "next/image";
-import FileImg from "/public/assets/dashboard/file.svg";
 import Link from "next/link";
 import MenuComponent from "../MenuComponent";
 import { IoIosArrowDown } from "react-icons/io";
@@ -96,19 +94,6 @@ export const unverified_columns: ColumnDef<IUnverifiedArtisans>[] = [
       );
     },
   },
-  //   {
-  //     accessorKey: "uploaded_by",
-  //     header: "Uploaded By",
-  //     cell: ({ row }) => {
-  //       return (
-  //         <div className="w-[10rem] xl:w-auto">
-  //           <p className="text-gray-1 text-[0.88rem]">
-  //             {row.getValue("uploaded_by")}
-  //           </p>
-  //         </div>
-  //       );
-  //     },
-  //   },
   {
     id: "select",
     cell: ({ row }) => {

@@ -2,6 +2,7 @@ import express from "express";
 import {
   createBooking,
   getBookingById,
+  getBookingsForArtisan,
 } from "../controllers/bookingController";
 import { authenticate, authorize } from "../middleware/authMiddleware";
 
@@ -12,6 +13,13 @@ router.post(
   authenticate,
   authorize(["customer"]),
   createBooking
+);
+
+router.get(
+  "/get-bookings",
+  authenticate,
+  authorize(["artisan"]),
+  getBookingsForArtisan
 );
 
 router.get(

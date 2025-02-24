@@ -74,7 +74,7 @@ const Field = (props: FieldHookConfig<string> & OtherProps) => {
         </div>
       </label>
       {meta.touched && meta.error ? (
-        <div className="text-val-error-red mt-2 text-xs font-medium ">
+        <div className="text-[#e74f4f] mt-2 text-xs font-medium ">
           {meta.error}
         </div>
       ) : null}

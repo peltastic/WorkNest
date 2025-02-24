@@ -3,13 +3,19 @@ const cookies = new Cookies();
 export function setTokenCookie(token: string) {
   cookies.set("token", token, {
     path: "/",
-    expires: new Date(Date.now() + 0.9 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
   });
 }
 export function setAdminTokenCookie(token: string) {
   cookies.set("ad_token", token, {
     path: "/",
-    expires: new Date(Date.now() + 0.9 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+  });
+}
+export function setArtisanTokenCookie(token: string) {
+  cookies.set("ar_token", token, {
+    path: "/",
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
   });
 }
 

@@ -78,6 +78,7 @@ const Verification = ({
           <span className="font-semibold">Voters card</span>
         </p>
         <Dropzone
+          accept={["application/pdf"]}
           onDrop={(files) => {
             if (files) {
               updateFileFields("meansOfId", files[0]);

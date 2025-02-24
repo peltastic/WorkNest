@@ -16,15 +16,15 @@ body {
 .user-auth-bg {
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(#323231bf, #1d1d1de1), url("../../public/user-auth-bg.jpg");
+  background-image: linear-gradient(#323231bf, #1d1d1de1), url("/public/user-auth-bg.jpg");
 }
 .admin-auth-bg {
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(#323231bf, #1d1d1de1), url("../../public/admin.jpg");
+  background-image: linear-gradient(#323231bf, #1d1d1de1), url("/public/admin.jpg");
 }
 .pro-auth-bg {
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(#323231bf, #1d1d1de1), url("../../public/pro.png");
+  background-image: linear-gradient(#323231bf, #1d1d1de1), url("/public/pro.png");
 }

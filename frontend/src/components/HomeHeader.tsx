@@ -19,9 +19,11 @@ const HomeHeader = (props: Props) => {
           <h1 className="leading-[1.2] text-[5rem] font-light">
             Find & Book Artisans Book Near You!
           </h1>
+          <Link href={"/feed"}>
           <button className="mt-10 text-white bg-black1 px-4 py-2 rounded-md">
             Find now
           </button>
+          </Link>
           <div className="flex mt-10 gap-x-8">
             <div className=" bg-[#ed7f2b3c] rounded-xl w-[15rem] px-6 py-6">
               <h2 className=" text-lg">For Customer</h2>

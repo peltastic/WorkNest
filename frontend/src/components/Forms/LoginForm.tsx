@@ -27,7 +27,7 @@ const LoginForm = (props: Props) => {
   useEffect(() => {
     if (isError) {
       nprogress.complete();
-      notify("error", "", (result.error as any).data?.message || "An Error Occured");
+      notify("error", "", (result.error as any)?.data?.message || "An Error Occured");
     }
 
     if (isSuccess) {
@@ -48,7 +48,7 @@ const LoginForm = (props: Props) => {
   useEffect(() => {
     if (result.isError) {
       nprogress.complete();
-      notify("error", "", (error as any).data?.message || "An Error Occured");
+      notify("error", "", (result.error as any).data?.message || "An Error Occured");
     }
     if (result.isSuccess) {
       notify("success", "Login successful!");

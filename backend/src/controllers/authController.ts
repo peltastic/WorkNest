@@ -243,7 +243,7 @@ export const loginAsAdmin = async (req: Request, res: Response): Promise<any> =>
     const user = await User.findOne({ email, role: "admin" });
 
     if (!user) {
-      return res.status(404).json({ message: "Admin not found" });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
     // Ensure admin has a password set

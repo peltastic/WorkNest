@@ -53,7 +53,7 @@ export const sendVerificationEmailToArtisan = async (
     });
 
     // Construct reset URL
-    const resetUrl = `http://localhost:8081/pro/auth/set-password?token=${token}`;
+    const resetUrl = `https://work-nest-sigma.vercel.app/pro/auth/set-password?token=${token}`;
 
     // Email content
     const subject = "Set Your Password & Complete Verification";

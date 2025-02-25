@@ -4,6 +4,7 @@ import { sendEmailHandler } from "../utils/sendEmail";
 
 import jwt from "jsonwebtoken";
 import User, { IUser } from "../models/User";
+import { AuthRequest } from "../middleware/authMiddleware";
 
 export const getUnverifiedArtisans = async (
   req: Request,
@@ -115,5 +116,52 @@ export const setArtisanPassword = async (
   } catch (error) {
     console.error("Error setting password:", error);
     res.status(500).json({ message: "Invalid or expired token" });
+  }
+};
+
+export const updateArtisanFeedback = async (
+  req: AuthRequest,
+  res: Response
+): Promise<any> => {
+  try {
+    const { artisanId } = req.params;
+  const userId = req.userId
+    const { feedback, rating } = req.body;
+
+    if (!feedback) {
+      return res
+        .status(400)
+        .json({ message: "feedback are required." });
+    }
+
+    const user = await User.findById(userId)
+
+    const customer_name = `${user?.fname} ${user?.lname}`
+
+    // Find artisan
+    const artisan = await ArtisanInfo.findById(artisanId);
+    if (!artisan) {
+      return res.status(404).json({ message: "Artisan not found" });
+    }
+
+    // Add feedback
+    artisan.feedbacks.push({ customer_name, feedback });
+
+    // Use 0 if no rating is provided
+    const newRating = Number(rating) ?? 0;
+
+    // Calculate new rating
+    const totalFeedbacks = artisan.feedbacks.length;
+    artisan.rating = (artisan.rating + newRating) / totalFeedbacks;
+
+    // Save updated artisan info
+    await artisan.save();
+
+    return res
+      .status(200)
+      .json({ message: "Feedback and rating updated successfully", artisan });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 };

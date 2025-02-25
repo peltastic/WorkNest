@@ -81,7 +81,7 @@ export const orders_columns: ColumnDef<IOrders>[] = [
         >
           <div className="bg-white ">
             <ul className="px-1 text-gray-6 text-[0.88rem]">
-              <li className="py-1 px-4 hover:bg-gray-bg-1 transition-all rounded-md">
+              <li onClick={() => {router.push("/pro/chats")}} className="py-1 px-4 hover:bg-gray-bg-1 transition-all rounded-md">
                 <button>Message</button>
               </li>
             </ul>

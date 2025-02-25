@@ -9,6 +9,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { artisanRegSchema } from "@/utils/validation/auth";
 import { IRegisterArtisanPayload } from "@/lib/features/auth/auth";
 import { IRegisterArtisansTextField } from "@/app/pro/get-started/page";
+import { useRouter } from "next/navigation";
 
 type Props = {
   next: () => void;
@@ -19,6 +20,7 @@ type Props = {
 const icon = <IoIosArrowDown />;
 
 const PersonalInformation = (props: Props) => {
+  const router = useRouter()
   const [skillsVal, setSkillsVal] = useState<string>(
     props.data.skills || ""
   );
@@ -152,6 +154,7 @@ const PersonalInformation = (props: Props) => {
               </div>
             </div>
             <div className="mt-8 flex">
+              <button type="button" onClick={() => router.push("/pro/auth/login")} className="underline text-gray-500">Already have an account</button>
               <button
                 disabled={!isValid}
                 className="bg-primary disabled:cursor-not-allowed text-white ml-auto py-2 px-4 rounded-md flex items-center"

@@ -9,8 +9,10 @@ interface IMessage {
 
 export interface IChatRoom extends Document {
   roomId: string;
-  userId: mongoose.Types.ObjectId;  // The user who owns/created the chatroom
-  roomName?: string;
+  userId: mongoose.Types.ObjectId;
+  artisanId: mongoose.Types.ObjectId;
+  userRoomName: string;
+  artisanRoomName: string;
   messages: IMessage[];
 }
 
@@ -23,8 +25,14 @@ const MessageSchema = new Schema<IMessage>({
 
 const ChatRoomSchema = new Schema<IChatRoom>({
   roomId: { type: String, required: true, unique: true },
-  userId: { type: Schema.Types.ObjectId, ref: "User", required: true }, // Chatroom owner
-  roomName: { type: String },
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  artisanId: {
+    type: Schema.Types.ObjectId,
+    ref: "ArtisanInfo",
+    required: true,
+  },
+  userRoomName: { type: String },
+  artisanRoomName: { type: String },
   messages: [MessageSchema],
 });
 

@@ -28,8 +28,25 @@ export const bookingApi = createApi({
         method: "POST",
       }),
     }),
+    postServiceFeedback: builder.mutation<
+      unknown,
+      {
+        feedback: string;
+        rating?: number;
+        artisanId: string;
+      }
+    >({
+      query: ({ artisanId, feedback, rating }) => ({
+        url: `/api/users/post-feedback/${artisanId}`,
+        method: "POST",
+        body: {
+          feedback,
+          rating,
+        },
+      }),
+    }),
   }),
 });
 
-
-export const {useCreateBookingMutation} = bookingApi
+export const { useCreateBookingMutation, usePostServiceFeedbackMutation } =
+  bookingApi;

@@ -5,6 +5,8 @@ import { userApi } from "./features/admin/users";
 import { serviceApi } from "./features/services";
 import { bookingApi } from "./features/booking";
 import { artisanBookingApi } from "./features/pro/booking";
+import { chatApi } from "./features/chat";
+import { proChatApi } from "./features/pro/chat";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +20,8 @@ export const store = configureStore({
     [serviceApi.reducerPath]: serviceApi.reducer,
     [bookingApi.reducerPath]: bookingApi.reducer,
     [artisanBookingApi.reducerPath]: artisanBookingApi.reducer,
+    [chatApi.reducerPath]: chatApi.reducer,
+    [proChatApi.reducerPath]: proChatApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -28,6 +32,8 @@ export const store = configureStore({
       serviceApi.middleware,
       bookingApi.middleware,
       artisanBookingApi.middleware,
+      chatApi.middleware,
+      proChatApi.middleware
     ]),
 });
 

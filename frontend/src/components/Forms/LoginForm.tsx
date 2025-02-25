@@ -96,7 +96,7 @@ const LoginForm = (props: Props) => {
           {props.loginType === "admin" ? null : <p className="mt-6 text-gray-400">
             Don't have an account?{" "}
             <span className="underline">
-              <Link href={"/user/auth/register"}>create one</Link>
+              <Link href={props.loginType === "artisan" ? "/pro/auth/register" : "/user/auth/register"}>create one</Link>
             </span>
           </p>}
           <button

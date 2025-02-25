@@ -14,6 +14,12 @@ export interface IGetFetchServicesResponse {
     };
     skills: string;
     profilePicture: string;
+    rating: number
+    feedbacks: {
+      _id: string
+      customer_name: string
+      feedback: string
+    }[]
   }[];
 }
 
@@ -32,6 +38,12 @@ export interface IGetSingleSingleService {
     skills: string;
     images: string[];
     profilePicture: string;
+    rating: number
+    feedbacks: {
+      _id: string
+      customer_name: string
+      feedback: string
+    }[]
   };
 }
 

@@ -59,8 +59,8 @@ const ServiceFeedPage = (props: Props) => {
           return {
             id: el._id,
             name: `${el.user.fname} ${el.user.lname}`,
-            rating: 0,
-            reviews: 0,
+            rating: el.rating,
+            reviews: el.feedbacks.length,
             service: el.skills,
             profilePic: el.profilePicture,
           };

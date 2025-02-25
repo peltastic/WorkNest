@@ -1,7 +1,6 @@
 "use client";
 import ProLayout from "@/components/Pro/ProLayout";
 import PersonalInformation from "@/components/Pro/Verification/PersonalInformation";
-import SecureAccount from "@/components/Pro/Verification/SecureAccount";
 import Verification from "@/components/Pro/Verification/Verification";
 import Works from "@/components/Pro/Verification/Works";
 import {

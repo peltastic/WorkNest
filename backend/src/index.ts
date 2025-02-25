@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes";
 import usersRoutes from "./routes/userRoutes";
 import serviceRoutes from "./routes/serviceRoute";
 import bookingRoutes from "./routes/bookingRoutes";
+import chatRoomRoutes from "./routes/chatRoomRoutes"
 import cors from "cors";
 import mongoose from "mongoose";
 import chatSocketHandler from "./sockets/chatSocket";
@@ -28,6 +29,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/chat", chatRoomRoutes)
 
 app.use(express.json());
 chatSocketHandler(io);
@@ -38,7 +40,7 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 

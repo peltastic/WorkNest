@@ -7,7 +7,6 @@ interface JoinRoomPayload {
 
 interface SendMessagePayload {
   roomId: string;
-  _id: string;
   message: string;
   userType: "customer" | "artisan";
 }
@@ -26,7 +25,7 @@ const chatSocketHandler = (io: Server) => {
     // Send message
     socket.on(
       "sendMessage",
-      async ({ roomId, _id, message, userType }: SendMessagePayload) => {
+      async ({ roomId,  message, userType }: SendMessagePayload) => {
         if (!roomId || !message) return;
 
         // Save message to database

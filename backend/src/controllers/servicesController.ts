@@ -54,7 +54,7 @@ export const listArtisans = async (req: Request, res: Response) => {
 
     // Fetch artisans with filters, pagination, and populate user details
     const artisans = await ArtisanInfo.find(artisanFilter)
-      .select(["skills", "profilePicture"])
+      .select(["skills", "profilePicture", "feedbacks", "rating"])
       .populate({
         path: "user",
         select: "fname lname state city phone email",
@@ -89,7 +89,7 @@ export const getArtisanById = async (req: Request, res: Response): Promise<any> 
 
     // Fetch artisan by ID and populate user details
     const artisan = await ArtisanInfo.findById(id)
-      .select(["skills", "profilePicture", "images"]) // Adjust fields as needed
+      .select(["skills", "profilePicture", "images", "feedbacks", "rating"]) // Adjust fields as needed
       .populate({
         path: "user",
         select: "fname lname state city phone email",

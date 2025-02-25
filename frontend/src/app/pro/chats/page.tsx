@@ -1,4 +1,5 @@
 "use client";
+
 import ChatLeft from "@/components/Chat/ChatLeft";
 import ChatRight from "@/components/Chat/ChatRight";
 import Layout from "@/components/Layout";
@@ -13,15 +14,18 @@ import { hastoken } from "@/utils/helperFunction";
 import { notify } from "@/utils/notification";
 import moment from "moment";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
+
 type Props = {};
 
-const ProChatpage = (props: Props) => {
+const ChatPageContent = () => {
   const router = useRouter();
   const [getSingleRoom, result] = useLazyGetSingleChatRoomQuery();
   const search = useSearchParams();
   const searchVal = search.get("room");
+
   const [getChatRooms, { isLoading, data }] = useLazyGetArtisanChatRoomQuery();
+
   useEffect(() => {
     const hasTokenVal = hastoken("ar_token");
     if (!hasTokenVal) {
@@ -44,7 +48,7 @@ const ProChatpage = (props: Props) => {
     <ProLayout>
       <div className="flex h-[90vh] mb-10 mt-10">
         {isLoading ? (
-          <div className="w-[2rem] ">
+          <div className="w-[2rem]">
             <Spinner />
           </div>
         ) : (
@@ -52,14 +56,12 @@ const ProChatpage = (props: Props) => {
             {data && (
               <ChatLeft
                 type="artisan"
-                data={data.data.map((el) => {
-                  return {
-                    body: moment(el.userId.createdAt).format("ll"),
-                    id: el.roomId,
-                    roomName: el.userRoomName,
-                    profilePicture: "",
-                  };
-                })}
+                data={data.data.map((el) => ({
+                  body: moment(el.userId.createdAt).format("ll"),
+                  id: el.roomId,
+                  roomName: el.userRoomName,
+                  profilePicture: "",
+                }))}
               />
             )}
           </>
@@ -75,13 +77,22 @@ const ProChatpage = (props: Props) => {
             )}
           </>
         ) : (
-
           <div className="w-[75%] relative">
-            <p className="text-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2  text-black">Please select a conversation</p>
+            <p className="text-2xl absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+              Please select a conversation
+            </p>
           </div>
         )}
       </div>
     </ProLayout>
+  );
+};
+
+const ProChatpage = (props: Props) => {
+  return (
+    <Suspense fallback={<Spinner />}>
+      <ChatPageContent />
+    </Suspense>
   );
 };
 

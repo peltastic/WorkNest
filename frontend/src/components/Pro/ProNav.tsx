@@ -1,4 +1,4 @@
-"nav"
+"use client"
 import { hastoken } from "@/utils/helperFunction";
 import { notify } from "@/utils/notification";
 import { removeCookie } from "@/utils/storage";

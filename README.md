@@ -21,6 +21,7 @@ Worknest is a platform where customers can discover and connect with skilled art
 - **Database:** MongoDB
 - **Authentication:** JWT (JSON Web Token)
 - **Real-time Messaging:** Socket.io
+- **Cloudinary for file and image uploads
 
 ## Getting Started
 
@@ -29,7 +30,6 @@ Worknest is a platform where customers can discover and connect with skilled art
 Ensure you have the following installed on your machine:
 - Node.js (Latest LTS version)
 - MongoDB (Local or Cloud instance)
-- Python (For web scraping, if applicable)
 
 ## Running the Project
 
@@ -51,6 +51,9 @@ Ensure you have the following installed on your machine:
    MONGO_URI=your_mongodb_connection_string
    JWT_SECRET=your_jwt_secret
    SOCKET_IO_PORT=5000
+   CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=
    ```
 
 4. Start the backend server:

@@ -52,8 +52,8 @@ Ensure you have the following installed on your machine:
    JWT_SECRET=your_jwt_secret
    SOCKET_IO_PORT=5000
    CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
+   CLOUDINARY_API_KEY=
+   CLOUDINARY_API_SECRET=
    ```
 
 4. Start the backend server:
